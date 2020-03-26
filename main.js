@@ -49,10 +49,28 @@ const displayTieMessage = function () {
     displayMessage("Tie game!")
 }
 
-const dropDiskIntoColumn = function (columnEl) {
+const columnIsFull = function (board, index) {
+    return board[0][index] !== null
+}
+
+const dropDiskIntoColumn = function (columnEl, board, playerNum) {
+    const columnIndex = Number(columnEl.id.slice(-1))
     // if the column is not full...
+    if (columnIsFull(board, columnIndex)) {
+        return
+    }
     // update the boardModel
+    for (let row=board.length-1; row>=0; row--) {
+        if (board[row][columnIndex] === null) {
+            board[row][columnIndex] = playerNum
+            break
+        }
+    }
     // update the HTML
+    let newDisc = document.createElement('div')
+    newDisc.className = (playerNum === 1) ? "disc pl1" : "disc pl2"
+    columnEl.appendChild(newDisc)
+
     numberOfDiscsPlayed++
 }
 
@@ -120,7 +138,7 @@ const switchToNextPlayer = function () {
 const columnClickHandler = function (event) {
     console.log('click!')
     const columnThatWasClicked = event.currentTarget
-    dropDiskIntoColumn(columnThatWasClicked)
+    dropDiskIntoColumn(columnThatWasClicked, boardModel, currentPlayer)
     // see if the game has been won or tied
     const winner = determineGameWinner(boardModel)
     if (winner !== null) {
@@ -159,7 +177,7 @@ initializeGame()
 
 
 
-const testWinnerVertical = function () {
+const test = function () {
     console.assert((winnerVertical([
         [null, null, null, null, null, null, null],
         [null, null, null, null, null, null, null],
@@ -179,11 +197,11 @@ const testWinnerVertical = function () {
     console.assert((winnerVertical([
         [null, null, null, null, null, null, null],
         [null, null, null, null, null, null, null],
-        [2, null, null, null, null, null, null],
-        [2, null, null, null, null, null, null],
-        [2, null, null, null, null, null, null],
-        [2, null, null, null, null, null, null]
-    ]) === 2), "Winner Vertical fails on col 0 player 2 win")
+        ["batman", null, null, null, null, null, null],
+        ["batman", null, null, null, null, null, null],
+        ["batman", null, null, null, null, null, null],
+        ["batman", null, null, null, null, null, null]
+    ]) === "batman"), "Winner Vertical fails on col 0 batman win")
     console.assert((winnerVertical([
         [null, null, 2, null, null, null, null],
         [null, null, 1, null, null, null, null],
@@ -192,5 +210,37 @@ const testWinnerVertical = function () {
         [   2, null, 2, null, null, null, 1],
         [   2, null, 2, null, null, null, 1]
     ]) === 1), "Winner Vertical fails on col 6 player 1 win")
+    console.assert((winnerVertical([
+        [null, null, 1, null, null, null, null],
+        [null, null, 1, null, null, null, null],
+        [   2, null, 1, null, null, null, 1],
+        [   1, null, 1, null, null, null, 2],
+        [   2, null, 2, null, null, null, 1],
+        [   2, null, 2, null, null, null, 1]
+    ]) === 1), "Winner Vertical fails on col 2 player 1 win")
+    console.assert((columnIsFull([
+        [null, null, 1, null, null, null, null],
+        [null, null, 1, null, null, null, null],
+        [   2, null, 1, null, null, null, 1],
+        [   1, null, 1, null, null, null, 2],
+        [   2, null, 2, null, null, null, 1],
+        [   2, null, 2, null, null, null, 1]
+    ], 0) === false), "columnIsFull fails checking a partially filled col 0")
+    console.assert((columnIsFull([
+        [null, null, 1, null, null, null, null],
+        [null, null, 1, null, null, null, null],
+        [   2, null, 1, null, null, null, 1],
+        [   1, null, 1, null, null, null, 2],
+        [   2, null, 2, null, null, null, 1],
+        [   2, null, 2, null, null, null, 1]
+    ], 1) === false), "columnIsFull fails checking an empty col1")
+    console.assert((columnIsFull([
+        [null, null, 1, null, null, null, null],
+        [null, null, 1, null, null, null, null],
+        [   2, null, 1, null, null, null, 1],
+        [   1, null, 1, null, null, null, 2],
+        [   2, null, 2, null, null, null, 1],
+        [   2, null, 2, null, null, null, 1]
+    ], 2) === true), "columnIsFull fails checking a full col2")
 }
-// testWinnerVertical()
+test()
