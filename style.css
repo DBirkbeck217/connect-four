@@ -8,7 +8,7 @@ h1 {
   font-family: "Righteous", cursive;
   text-align: center;
   padding: 20px;
-  font-size: 64px;
+  font-size: 72px;
   color: whitesmoke;
 }
 
@@ -16,9 +16,17 @@ body {
   background-color: rgb(0, 138, 218);
 }
 
+#message {
+  text-align: center;
+  margin-top: 30px;
+  color: white;
+  font-size: 24px;
+  font-family: "Courier New", Courier, monospace;
+}
+
 #board {
-  height: 400px;
-  width: 75%;
+  height: 485px;
+  width: 40%;
   display: flex;
 }
 
@@ -35,7 +43,7 @@ body {
 }
 
 .disc {
-  height: 20px;
+  height: 80px;
   border-radius: 50%;
 }
 

@@ -36,10 +36,8 @@ let currentPlayer = 1; // 1 or 2
 let numberOfDiscsPlayed = 0;
 
 const columnClickHandler = function (event) {
-  console.log("click!");
   const columnThatWasClicked = event.currentTarget;
   const columnNum = columnThatWasClicked.id.slice(-1);
-  console.log(columnNum);
   dropDiskIntoColumn(columnThatWasClicked, boardModel, currentPlayer);
   // see if the game has been won or tied
   const winner = determineGameWinner(boardModel);
@@ -67,13 +65,11 @@ const createColumnEventListeners = function () {
 const displayBoard = function (boardModel) {};
 
 const displayCurrentPlayer = function (currPlayer) {
-  displayMessage("Current player is " + currPlayer);
+  displayMessage("Current player : " + currPlayer);
 };
 
 const displayMessage = function (message) {
-  // stub
-  // TODO: Erase the content of the message div
-  //       Display the new message into the message div
+  document.getElementById("message").innerHTML = message;
   console.log(message);
 };
 
@@ -100,6 +96,7 @@ const dropDiskIntoColumn = function (columnEl, board, playerNum) {
   const columnIndex = Number(columnEl.id.slice(-1));
   // if the column is not full...
   if (columnIsFull(board, columnIndex)) {
+    console.log("column is full");
     return;
   }
   // update the boardModel
