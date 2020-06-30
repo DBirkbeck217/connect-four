@@ -24,6 +24,37 @@ body {
   font-family: "Courier New", Courier, monospace;
 }
 
+#win_message {
+  margin-top: 30px;
+  text-align: center;
+  position: relative;
+  color: white;
+  font-size: 24px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.blinking {
+  animation: blinkingText 1s infinite;
+}
+
+@keyframes blinkingText {
+  0% {
+    color: white;
+  }
+  49% {
+    color: white;
+  }
+  60% {
+    color: transparent;
+  }
+  99% {
+    color: transparent;
+  }
+  100% {
+    color: white;
+  }
+}
+
 #board {
   height: 485px;
   width: 40%;

@@ -82,10 +82,12 @@ const initializeGame = function () {
 initializeGame();
 
 const displayWhoWon = function (winner) {
-  displayMessage("Winner is " + winner);
+  document.getElementById("win_message").innerHTML =
+    "Player " + winner + " wins!";
 };
+
 const displayTieMessage = function () {
-  displayMessage("Tie game!");
+  document.getElementById("win_message").innerHTML = "Tie game!";
 };
 
 const columnIsFull = function (board, index) {
@@ -180,8 +182,6 @@ const switchToNextPlayer = function () {
   } else if (currentPlayer === 2) {
     currentPlayer = 1;
   }
-  // currentPlayer 1 change to 2
-  // currentPlayer 2 change to 1
 };
 
 const test = function () {
