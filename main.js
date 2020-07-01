@@ -83,6 +83,7 @@ initializeGame();
 const displayWhoWon = function (winner) {
   document.getElementById("win_message").innerHTML =
     "Player " + winner + " wins!";
+  confetti.start();
 };
 
 const displayTieMessage = function () {
@@ -97,6 +98,7 @@ const dropDiskIntoColumn = function (columnEl, board, playerNum) {
   const columnIndex = Number(columnEl.id.slice(-1));
   // if the column is not full...
   if (columnIsFull(board, columnIndex)) {
+    alert("column is full!");
     console.log("column is full");
     return;
   }
@@ -113,7 +115,6 @@ const dropDiskIntoColumn = function (columnEl, board, playerNum) {
   columnEl.appendChild(newDisc);
 
   numberOfDiscsPlayed++;
-  // switchToNextPlayer();
 };
 
 const winnerHorizontal = function (board) {
@@ -130,7 +131,7 @@ const winnerHorizontal = function (board) {
   //     }
   //   }
   // }
-  // // return 1, 2, or null
+  // return 1, 2, or null
   return null;
 };
 const winnerVertical = function (board) {
