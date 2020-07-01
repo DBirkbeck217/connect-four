@@ -84,6 +84,7 @@ const displayWhoWon = function (winner) {
   document.getElementById("win_message").innerHTML =
     "Player " + winner + " wins!";
   confetti.start();
+  document.getElementById("replay").style.display = "block";
 };
 
 const displayTieMessage = function () {
@@ -195,6 +196,11 @@ const switchToNextPlayer = function () {
   } else if (currentPlayer === 2) {
     currentPlayer = 1;
   }
+};
+
+document.getElementById("replay").onclick = function () {
+  location.reload();
+  return false;
 };
 
 const test = function () {

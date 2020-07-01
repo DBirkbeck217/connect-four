@@ -33,6 +33,16 @@ body {
   font-family: "Courier New", Courier, monospace;
 }
 
+#button_wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+#replay {
+  display: none;
+}
+
 .blinking {
   animation: blinkingText 1s infinite;
 }
