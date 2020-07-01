@@ -48,7 +48,7 @@ const columnClickHandler = function (event) {
   } else {
     switchToNextPlayer();
   }
-
+  console.log(numberOfDiscsPlayed);
   displayCurrentPlayer(currentPlayer);
 };
 
@@ -70,7 +70,6 @@ const displayCurrentPlayer = function (currPlayer) {
 
 const displayMessage = function (message) {
   document.getElementById("message").innerHTML = message;
-  console.log(message);
 };
 
 const initializeGame = function () {
@@ -114,17 +113,29 @@ const dropDiskIntoColumn = function (columnEl, board, playerNum) {
   columnEl.appendChild(newDisc);
 
   numberOfDiscsPlayed++;
-  //   switchToNextPlayer();
+  // switchToNextPlayer();
 };
 
 const winnerHorizontal = function (board) {
-  // return 1, 2, or null
+  // for (let col = 0; col < 3; col++) {
+  //   for (let row = 0; row < board[col].length; row++) {
+  //     if (
+  //       board[row][col] === board[row][col + 1] &&
+  //       board[row][col] === board[row][col + 2] &&
+  //       board[row][col] === board[row][col + 3] &&
+  //       board[row][col] !== null
+  //     ) {
+  //       console.log(board[row][col]);
+  //       return board[row][col];
+  //     }
+  //   }
+  // }
+  // // return 1, 2, or null
   return null;
 };
 const winnerVertical = function (board) {
   for (let row = 0; row < 3; row++) {
     for (let col = 0; col < board[row].length; col++) {
-      // console.log(`${board[row][col]} ${board[row + 1][col]} ${board[row + 2][col]} ${board[row + 3][col]} `)
       if (
         board[row][col] === board[row + 1][col] &&
         board[row][col] === board[row + 2][col] &&
@@ -171,10 +182,11 @@ const determineGameWinner = function (board) {
   return winner;
 };
 
-const gameIsATie = function (board) {
+const gameIsATie = function () {
   // board is completely filled (numberOfDiscsPlayed is 42)
+  return numberOfDiscsPlayed === 42 ? true : false;
   // return true or false
-  return false;
+  // return false;
 };
 const switchToNextPlayer = function () {
   if (currentPlayer === 1) {
