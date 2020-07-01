@@ -120,19 +120,18 @@ const dropDiskIntoColumn = function (columnEl, board, playerNum) {
 };
 
 const winnerHorizontal = function (board) {
-  // for (let col = 0; col < 3; col++) {
-  //   for (let row = 0; row < board[col].length; row++) {
-  //     if (
-  //       board[row][col] === board[row][col + 1] &&
-  //       board[row][col] === board[row][col + 2] &&
-  //       board[row][col] === board[row][col + 3] &&
-  //       board[row][col] !== null
-  //     ) {
-  //       console.log(board[row][col]);
-  //       return board[row][col];
-  //     }
-  //   }
-  // }
+  for (let row = 0; row < board.length; row++) {
+    for (let col = 0; col < board[row].length; col++) {
+      if (
+        board[row][col] === board[row][col + 1] &&
+        board[row][col] === board[row][col + 2] &&
+        board[row][col] === board[row][col + 3] &&
+        board[row][col] !== null
+      ) {
+        return board[row][col];
+      }
+    }
+  }
   // return 1, 2, or null
   return null;
 };
@@ -153,10 +152,34 @@ const winnerVertical = function (board) {
   return null;
 };
 const winnerDiagonalDownRight = function (board) {
+  // for (let row = 0; row < board.length; row++) {
+  //   for (let col = 0; col < board[row].length; col++) {
+  //     if (
+  //       board[row][col] === board[row + 1][col] &&
+  //       board[row][col] === board[row + 2][col] &&
+  //       board[row][col] === board[row + 3][col] &&
+  //       board[row][col] !== null
+  //     ) {
+  //       return board[row][col];
+  //     }
+  //   }
+  // }
   // return 1, 2, or null
   return null;
 };
 const winnerDiagonalUpRight = function (board) {
+  // for (let row = 0; row < board.length; row++) {
+  //   for (let col = 0; col < board[row].length; col++) {
+  //     if (
+  //       board[row][col] === board[row + 1][col + 1] &&
+  //       board[row][col] === board[row + 2][col + 2] &&
+  //       board[row][col] === board[row + 3][col + 3] &&
+  //       board[row][col] !== null
+  //     ) {
+  //       return board[row][col];
+  //     }
+  //   }
+  // }
   // return 1, 2, or null
   return null;
 };
@@ -180,7 +203,6 @@ const determineGameWinner = function (board) {
   } else {
     winner = null;
   }
-
   // return 1, 2, or null (tie or game isn't isn't over)
   return winner;
 };
@@ -203,7 +225,7 @@ document.getElementById("replay").onclick = function () {
 };
 
 const test = function () {
-  console.assert(
+  console.log(
     winnerVertical([
       [null, null, null, null, null, null, null],
       [null, null, null, null, null, null, null],
@@ -214,7 +236,7 @@ const test = function () {
     ]) === null,
     "Winner Vertical fails on empty board"
   );
-  console.assert(
+  console.log(
     winnerVertical([
       [null, null, null, null, null, null, null],
       [null, null, null, null, null, null, null],
@@ -225,7 +247,7 @@ const test = function () {
     ]) === 1,
     "Winner Vertical fails on col 0 player 1 win"
   );
-  console.assert(
+  console.log(
     winnerVertical([
       [null, null, null, null, null, null, null],
       [null, null, null, null, null, null, null],
@@ -236,7 +258,7 @@ const test = function () {
     ]) === "batman",
     "Winner Vertical fails on col 0 batman win"
   );
-  console.assert(
+  console.log(
     winnerVertical([
       [null, null, 2, null, null, null, null],
       [null, null, 1, null, null, null, null],
@@ -247,7 +269,7 @@ const test = function () {
     ]) === 1,
     "Winner Vertical fails on col 6 player 1 win"
   );
-  console.assert(
+  console.log(
     winnerVertical([
       [null, null, 1, null, null, null, null],
       [null, null, 1, null, null, null, null],
@@ -258,7 +280,7 @@ const test = function () {
     ]) === 1,
     "Winner Vertical fails on col 2 player 1 win"
   );
-  console.assert(
+  console.log(
     columnIsFull(
       [
         [null, null, 1, null, null, null, null],
@@ -272,7 +294,7 @@ const test = function () {
     ) === false,
     "columnIsFull fails checking a partially filled col 0"
   );
-  console.assert(
+  console.log(
     columnIsFull(
       [
         [null, null, 1, null, null, null, null],
@@ -286,7 +308,7 @@ const test = function () {
     ) === false,
     "columnIsFull fails checking an empty col1"
   );
-  console.assert(
+  console.log(
     columnIsFull(
       [
         [null, null, 1, null, null, null, null],
