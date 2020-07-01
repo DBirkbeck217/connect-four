@@ -89,6 +89,7 @@ const displayWhoWon = function (winner) {
 
 const displayTieMessage = function () {
   document.getElementById("win_message").innerHTML = "Tie game!";
+  document.getElementById("replay").style.display = "block";
 };
 
 const columnIsFull = function (board, index) {
@@ -187,8 +188,6 @@ const determineGameWinner = function (board) {
 const gameIsATie = function () {
   // board is completely filled (numberOfDiscsPlayed is 42)
   return numberOfDiscsPlayed === 42 ? true : false;
-  // return true or false
-  // return false;
 };
 const switchToNextPlayer = function () {
   if (currentPlayer === 1) {
