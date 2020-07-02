@@ -48,7 +48,6 @@ const columnClickHandler = function (event) {
   } else {
     switchToNextPlayer();
   }
-  console.log(numberOfDiscsPlayed);
   displayCurrentPlayer(currentPlayer);
 };
 
@@ -152,34 +151,34 @@ const winnerVertical = function (board) {
   return null;
 };
 const winnerDiagonalDownRight = function (board) {
-  // for (let row = 0; row < board.length; row++) {
-  //   for (let col = 0; col < board[row].length; col++) {
-  //     if (
-  //       board[row][col] === board[row + 1][col + 1] &&
-  //       board[row][col] === board[row + 2][col + 1] &&
-  //       board[row][col] === board[row + 3][col + 1] &&
-  //       board[row][col] !== null
-  //     ) {
-  //       return board[row][col];
-  //     }
-  //   }
-  // }
+  for (let row = 0; row < 3; row++) {
+    for (let col = 0; col < board[row].length; col++) {
+      if (
+        board[row][col] === board[row + 1][col + 1] &&
+        board[row][col] === board[row + 2][col + 1] &&
+        board[row][col] === board[row + 3][col + 1] &&
+        board[row][col] !== null
+      ) {
+        return board[row][col];
+      }
+    }
+  }
   // return 1, 2, or null
   return null;
 };
 const winnerDiagonalUpRight = function (board) {
-  // for (let row = 0; row < board.length; row++) {
-  //   for (let col = 0; col < board[row].length; col++) {
-  //     if (
-  //       board[row][col] === board[row + 1][col + 1] &&
-  //       board[row][col] === board[row + 2][col + 2] &&
-  //       board[row][col] === board[row + 3][col + 3] &&
-  //       board[row][col] !== null
-  //     ) {
-  //       return board[row][col];
-  //     }
-  //   }
-  // }
+  for (let row = 0; row < 3; row++) {
+    for (let col = 0; col < board[row].length; col++) {
+      if (
+        board[row][col] === board[row + 1][col - 1] &&
+        board[row][col] === board[row + 2][col - 2] &&
+        board[row][col] === board[row + 3][col - 3] &&
+        board[row][col] !== null
+      ) {
+        return board[row][col];
+      }
+    }
+  }
   // return 1, 2, or null
   return null;
 };
