@@ -155,8 +155,8 @@ const winnerDiagonalDownRight = function (board) {
     for (let col = 0; col < board[row].length; col++) {
       if (
         board[row][col] === board[row + 1][col + 1] &&
-        board[row][col] === board[row + 2][col + 1] &&
-        board[row][col] === board[row + 3][col + 1] &&
+        board[row][col] === board[row + 2][col + 2] &&
+        board[row][col] === board[row + 3][col + 3] &&
         board[row][col] !== null
       ) {
         return board[row][col];
