@@ -224,7 +224,7 @@ document.getElementById("replay").onclick = function () {
 };
 
 const test = function () {
-  console.log(
+  console.assert(
     winnerVertical([
       [null, null, null, null, null, null, null],
       [null, null, null, null, null, null, null],
@@ -235,7 +235,7 @@ const test = function () {
     ]) === null,
     "Winner Vertical fails on empty board"
   );
-  console.log(
+  console.assert(
     winnerVertical([
       [null, null, null, null, null, null, null],
       [null, null, null, null, null, null, null],
@@ -246,7 +246,7 @@ const test = function () {
     ]) === 1,
     "Winner Vertical fails on col 0 player 1 win"
   );
-  console.log(
+  console.assert(
     winnerVertical([
       [null, null, null, null, null, null, null],
       [null, null, null, null, null, null, null],
@@ -257,7 +257,7 @@ const test = function () {
     ]) === "batman",
     "Winner Vertical fails on col 0 batman win"
   );
-  console.log(
+  console.assert(
     winnerVertical([
       [null, null, 2, null, null, null, null],
       [null, null, 1, null, null, null, null],
@@ -268,7 +268,7 @@ const test = function () {
     ]) === 1,
     "Winner Vertical fails on col 6 player 1 win"
   );
-  console.log(
+  console.assert(
     winnerVertical([
       [null, null, 1, null, null, null, null],
       [null, null, 1, null, null, null, null],
@@ -279,7 +279,7 @@ const test = function () {
     ]) === 1,
     "Winner Vertical fails on col 2 player 1 win"
   );
-  console.log(
+  console.assert(
     columnIsFull(
       [
         [null, null, 1, null, null, null, null],
@@ -293,7 +293,7 @@ const test = function () {
     ) === false,
     "columnIsFull fails checking a partially filled col 0"
   );
-  console.log(
+  console.assert(
     columnIsFull(
       [
         [null, null, 1, null, null, null, null],
@@ -307,7 +307,7 @@ const test = function () {
     ) === false,
     "columnIsFull fails checking an empty col1"
   );
-  console.log(
+  console.assert(
     columnIsFull(
       [
         [null, null, 1, null, null, null, null],
